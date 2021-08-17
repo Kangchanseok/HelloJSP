@@ -1,13 +1,10 @@
 <%@page import="com.example.emaillist.vo.EmailVo"%>
 <%@page import="java.util.List"%>
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-// 요청 객체에서 list 속성 받아오기
+//	요청 객체에서 list 속성 받아오기
 List<EmailVo> list = (List<EmailVo>)request.getAttribute("list");
-
 %>
 <!DOCTYPE html>
 <html>
@@ -40,19 +37,21 @@ List<EmailVo> list = (List<EmailVo>)request.getAttribute("list");
 			<!-- 삭제 폼 -->
 				<form action="<%= request.getContextPath() %>/el"
 					method="POST">
-					<input type="hidden" name="a" value="delete"/>
+					<input type="hidden" name="a" value="delete" />
 					<input type="hidden" name="no" value="<%= vo.getNo() %>" />	
 					<input type="submit" value="삭제" />
 				</form>
-				</td>
+			</td>
 		</tr>
 	</table>
 	<br />
 	<% } %>
 	<!-- 루프의 끝 -->
+	
 	<!-- 작성 폼으로 이동 -->
 	<p>
-	<a href="<%request.getContextPath(); %>/el?a=form">추가 이메일 등록</a>
+		<a href="<%= request.getContextPath() %>/el?a=form">추가 이메일 등록</a>
+	</p>
 	
 </body>
 </html>

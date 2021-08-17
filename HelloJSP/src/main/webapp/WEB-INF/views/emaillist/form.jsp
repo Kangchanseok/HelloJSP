@@ -12,9 +12,9 @@
 	아래 항목을 기입하고 등록 버튼을 눌러 주세요</p>
 	<!-- action: 요청을 처리할 페이지(서블릿/JSP)
 		method: 요청 방식 -->
-	<form action="web/el"
+	<form action="<%= request.getContextPath() %>/el"
 		method="POST">
-		<!-- 히든은  사용자 입력은 아니지만 전송해야 할 데이터 -->
+		<!-- hidden은 사용자 입력은 아니지만 전송해야 할 데이터 -->
 		<input type="hidden" value="add" name="a" />
 		<label for="last_name">성</label>
 		<input type="text" name="last_name" id="last_name" /><br />

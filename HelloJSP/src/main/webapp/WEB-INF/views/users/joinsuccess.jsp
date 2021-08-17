@@ -9,6 +9,5 @@
 <body>
 	<h1>Join Success</h1>
 	<p>가입에 성공하였습니다</p>
-	
 </body>
 </html>
