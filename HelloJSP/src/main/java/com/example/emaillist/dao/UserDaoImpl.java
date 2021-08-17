@@ -83,8 +83,39 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public int insert(UserVo vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int insertedCount = 0;
+		
+		try {
+			conn = getConnection();
+			// 실행 계획 준비
+			String sql = "insert into users (no, name, password, email, gender)" +
+			"values(seq_users_pk.nextval, ?, ?, ?, ?)";
+			pstmt = conn.prepareStatement(sql);
+					// 파라미터 바인딩
+			pstmt.setString(1, vo.getName());
+			pstmt.setString(2, vo.getPassword());
+			pstmt.setString(3, vo.getEmail());
+			pstmt.setString(4, vo.getGender());
+			
+			// 쿼리 실행
+			insertedCount = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e){
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				
+			}
+		}
+		return insertedCount;
 	}
 
 }
