@@ -35,10 +35,24 @@ List<EmailVo> list = (List<EmailVo>)request.getAttribute("list");
 			<th>이메일</th>
 			<td><%= vo.getEmail() %></td>
 		</tr>
+		<tr>
+			<td colspan="2">
+			<!-- 삭제 폼 -->
+				<form action="<%= request.getContextPath() %>/el"
+					method="POST">
+					<input type="hidden" name="a" value="delete"/>
+					<input type="hidden" name="no" value="<%= vo.getNo() %>" />	
+					<input type="submit" value="삭제" />
+				</form>
+				</td>
+		</tr>
 	</table>
 	<br />
 	<% } %>
 	<!-- 루프의 끝 -->
+	<!-- 작성 폼으로 이동 -->
+	<p>
+	<a href="<%request.getContextPath(); %>/el?a=form">추가 이메일 등록</a>
 	
 </body>
 </html>
